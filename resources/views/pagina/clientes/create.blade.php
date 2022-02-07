@@ -1,21 +1,25 @@
-@extends('layouts.base')
+@extends('layouts.app')
+
+@section('content')
 
 
-<h2>crear clientes</h2>
+<div style="padding: 40px;">
+
+  <h2>crear clientes</h2>
 
 
-<form  action="{{route('clientes.store')}}" method="POST" class="row g-3">
+  <form action="{{route('clientes.store')}}" method="POST" class="row g-3">
     @csrf
     <div class="row g-3">
-        <div class="col">
-            <label for="inputEmail4" class="form-label">Nombre Completo</label>
-          <input type="text" class="form-control" placeholder="Nombre Completo" aria-label="First name" id="nombre" name="nombre" value="{{old('nombre')}}">
-          {!!$errors->first('nombre','<small>:message</small><br>')!!}
-        </div>
+      <div class="col">
+        <label for="inputEmail4" class="form-label">Nombre Completo</label>
+        <input type="text" class="form-control" placeholder="Nombre Completo" aria-label="First name" id="nombre" name="nombre" value="{{old('nombre')}}">
+        {!!$errors->first('nombre','<small>:message</small><br>')!!}
+      </div>
     </div>
     <div class="col-md-12">
       <label for="inputEmail4" class="form-label">Tipo de Documento</label>
-      <input type="text" class="form-control"  placeholder="Documento" id="documento" name="documento" value="{{old('documento')}}">
+      <input type="text" class="form-control" placeholder="Documento" id="documento" name="documento" value="{{old('documento')}}">
       {!!$errors->first('documento','<small>:message</small><br>')!!}
     </div>
     <div class="col-md-6">
@@ -35,15 +39,14 @@
     </div>
 
 
-<div class="col-12">
-    <a href="/clientes" class="btn btn-info">Cancelar</a>
+    <div class="col-12">
+      <a href="/clientes" class="btn btn-info">Cancelar</a>
 
-    <button  type="submit" class="btn btn-primary">Registrar</button>
+      <button type="submit" class="btn btn-primary">Registrar</button>
+    </div>
+
+
+  </form>
 </div>
 
-
-    </form>
-
-
-
-
+@endsection

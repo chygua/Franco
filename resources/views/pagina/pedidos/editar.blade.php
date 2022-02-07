@@ -1,15 +1,18 @@
-@extends('layouts.base')
+@extends('layouts.app')
+
+@section('content')
+
+<div style="padding: 40px;">
+
+  <h2>editar Pedidos</h2>
 
 
-<h2>editar Pedidos</h2>
-
-
-<form  action="{{route('pedidos.update',$pedidos)}}" method="POST" class="row g-3">
+  <form action="{{route('pedidos.update',$pedidos)}}" method="POST" class="row g-3">
     @csrf
     @method('PUT')
     <div class="col-md-12">
       <label for="inputEmail4" class="form-label">Numero de Articulos</label>
-      <input type="text" class="form-control"  placeholder="Numero de Articulos" id="num_articulos" name="num_articulos" value="{{old('num_articulos')}}">
+      <input type="text" class="form-control" placeholder="Numero de Articulos" id="num_articulos" name="num_articulos" value="{{old('num_articulos')}}">
       {!!$errors->first('num_articulos','<small>:message</small><br>')!!}
     </div>
     <div class="col-md-6">
@@ -34,11 +37,14 @@
     </div>
 
 
-<div class="col-12">
-    <a href="/pedidos" class="btn btn-info">Cancelar</a>
+    <div class="col-12">
+      <a href="/pedidos" class="btn btn-info">Cancelar</a>
 
-    <button  type="submit" class="btn btn-primary">guardar</button>
+      <button type="submit" class="btn btn-primary">guardar</button>
+    </div>
+
+
+  </form>
 </div>
 
-
-    </form>
+@endsection

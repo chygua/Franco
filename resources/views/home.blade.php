@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,8 +14,10 @@
                         </div>
                     @endif
 
-                    {{ __('holas') }}
-                </div>
+                    <div>
+                    <img src="https://cdn.pixabay.com/photo/2019/08/27/04/18/store-icon-4433328_960_720.png">
+                    </div>
+                
             </div>
         </div>
     </div>
