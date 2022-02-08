@@ -15,7 +15,7 @@ class PedidosController extends Controller
     public function index()
     {
         $pedidos = pedidos::all();
-        return view('pagina.pedidos.pedidos')->with('pedidos',$pedidos);
+        return view('pagina.pedidos.pedidos')->with('pedidos', $pedidos);
     }
 
     /**
@@ -37,23 +37,23 @@ class PedidosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'cliente_id'=>'required',
-            'num_articulos'=>'required',
-            'codigo_articulo'=>'required',
-            'nom_articulo'=>'required ',
-            'sub_total'=>'required',
-            'iva'=>'required',
-            'valor_total'=>'required',
+            'cliente_id' => 'required',
+            'num_articulos' => 'required',
+            'codigo_articulo' => 'required',
+            'nom_articulo' => 'required ',
+            'sub_total' => 'required',
+            'iva' => 'required',
+            'valor_total' => 'required',
         ]);
 
         $pedidos = new pedidos();
-        $pedidos->cliente_id=$request->cliente_id;
-        $pedidos->num_articulos=$request->num_articulos;
-        $pedidos->codigo_articulo=$request->codigo_articulo;
-        $pedidos->nom_articulo=$request->nom_articulo;
-        $pedidos->sub_total=$request->sub_total;
-        $pedidos->iva=$request->iva;
-        $pedidos->valor_total=$request->valor_total;
+        $pedidos->cliente_id = $request->cliente_id;
+        $pedidos->num_articulos = $request->num_articulos;
+        $pedidos->codigo_articulo = $request->codigo_articulo;
+        $pedidos->nom_articulo = $request->nom_articulo;
+        $pedidos->sub_total = $request->sub_total;
+        $pedidos->iva = $request->iva;
+        $pedidos->valor_total = $request->valor_total;
 
 
         $pedidos->save();
@@ -79,8 +79,8 @@ class PedidosController extends Controller
      */
     public function edit($id)
     {
-        $Pedidos = Pedidos::find($id);
-        return view('pagina.Pedidos.editar')->with('Pedidos',$Pedidos);
+        $pedidos = Pedidos::find($id);
+        return view('pagina.pedidos.editar')->with('pedidos', $pedidos);
     }
 
     /**
@@ -90,19 +90,19 @@ class PedidosController extends Controller
      * @param  \App\Models\Pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pedidos $pedidos)
+    public function update(Request $request, Pedidos $pedido)
     {
-        
+        $pedido->cliente_id=$request->cliente_id;
+        $pedido->num_articulos=$request->num_articulos;
+        $pedido->codigo_articulo=$request->codigo_articulo;
+        $pedido->nom_articulo=$request->nom_articulo;
+        $pedido->sub_total=$request->sub_total;
+        $pedido->iva=$request->iva;
+        $pedido->valor_total=$request->valor_total;
 
-        $pedidos->num_articulos=$request->descripcion;
-        $pedidos->nom_articulo=$request->valor_und;
-        $pedidos->sub_total=$request->valor_und;
-        $pedidos->iva=$request->valor_und;
-        $pedidos->valor_total=$request->valor_und;
-
-
-        $pedidos->save();
+        $pedido->save();
         return redirect('/pedidos');
+
     }
 
     /**
@@ -111,8 +111,9 @@ class PedidosController extends Controller
      * @param  \App\Models\Pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pedidos $pedidos)
+    public function destroy(Pedidos $pedido)
     {
-        //
+        $pedido->delete();
+        return redirect('/pedidos');
     }
 }
